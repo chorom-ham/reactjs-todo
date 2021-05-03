@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# #과제 2: 리액트로 To Do App 만들기 
+COM,MA(컴공-호크마) 프론트엔드 스터디 두번째 과제입니다
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# INTRO
+안녕하세요🙂 호크마-컴공 스터디 기획 겸 프론트엔드 스터디 멘토를 맡은 함초롬입니다.
 
-## Available Scripts
+두번째 과제는 리액트로 ***To do*** 앱 만들기를 준비했습니다.
 
-In the project directory, you can run:
+지난번 과제와 내용은 동일하지만 바닐라 js가 아니라 리액트로 구현하는 과제입니다.
 
-### `npm start`
+개발에는 정답이 없습니다. 각자 고민하고 각자가 생각하는 가장 좋은 방식으로 본 과제를 구현해주시기 바랍니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+모르는 게 생기면 먼저 고민하고 공부해 본 다음 이후에도 잘 모르겠으면 디스코드 질문방에 질문합니다. 모르는 내용을 정리해 스터디 시간에 공유하고 같이 답을 찾아갑니다.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+개발자도구를 사용해서 코드를 베끼지 않도록 합니다.
 
-### `npm test`
+# 과제 설명
+## 과제 목표
+- 리액트로 개발해봅니다.
+- 컴포넌트 단위 개발을 이해해봅니다.
+- 코드의 재사용성을 높이는 법을 이해해봅니다.
+- React 컴포넌트의 생명주기를 이해하고 React Hooks를 사용해봅니다.
+- props와 state를 이해하고 적용해봅니다.
+- ```styled-components``` 사용 방법을 알고 익숙해집니다.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## 과제 요구사항
+![image](https://user-images.githubusercontent.com/52379950/115743223-6cdcd600-a3cc-11eb-9988-ed666de38b59.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 리액트를 사용해 To Do App을 위와 같이 구현합니다. [(결과화면)](https://vanilla-js-todo-1st.vercel.app/)
+- 스타일링 시 ```styled-components```를 사용합니다.
+- props와 state를 둘 다 사용합니다.
+- 할 일을 입력한 뒤 추가 버튼을 클릭하거나, 엔터를 눌렀을 때 아래에 할 일이 추가되도록 구현합니다.
+- 할 일을 눌렀을 때 완료되었다는 의미로 글 중간에 줄이 그어집니다. 할 일 텍스트를 클릭했을 때, 텍스트 중간에 그어진 줄 여부가 토글되도록 구현합니다.
+- 할 일 텍스트 옆의 X버튼을 눌렀을 때 할 일이 삭제되도록 구현합니다.
+- 기본 포맷은 지켜주시되, 스타일링은 자유롭게 해도 좋습니다. (색, 폰트 등)
+- 주어진 파일 이외에 새 파일을 만들지 않습니다.
+- 개발을 하다 기억이 안 나거나 잘 모르겠는 부분은 추가로 공부하고 정리합니다.
+- git commit 할 때 한번에 하는 것이 아니라 기능별로 commit 합니다. 
+- ```VSCode```와 ```Prettier```을 사용합니다. (저장 시 format 되도록 설정합니다.)
+- ```vercel```을 사용해 배포합니다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 생각해 볼 질문
+1. JSX는 무엇일까요?
+2. 컴포넌트는 무엇이고, 컴포넌트 단위로 개발하는 이유는 무엇일까요?
+3. state와 props는 무엇일까요?
+4. 리액트 훅은 무엇일까요?
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 과제 수행 방법
+1. 본 레포지토리를 fork합니다.
+2. fork된 레포지토리를 ```git clone```을 통해 로컬에 다운받습니다.
+3. 로컬에 다운 받은 이후 해당 디렉토리로 이동해 ```npm install```을 해 필요한 패키지를 설치하고 ```npm start```로 시작합니다.
+4. 코드 에디터는 ```VSCode```를 사용해 작업합니다.
+5. 브랜치를 자기 이름으로 판 다음 해당 브랜치에서 작업합니다. (예: ```git checkout -b chorom```)
+6. 로컬에서 개발한 작업물을 원격 레포지토리에 ```push```합니다.
+7. 완성한 결과물을 본 레포지토리에 ```pull request```로 보냅니다.
+8. 코드 리뷰를 받고 수정합니다.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### PR 템플릿
+```
+제목: [과제 {과제번호}] {이름} 과제 제출합니다
+내용:
+배포한 링크를 첨부합니다.
+과제를 하며 배운 내용, 고민한 내용, 어려웠던 내용, 추가로 구현하고 싶은 내용 등을 정리합니다.
+생각해 볼 질문에 대한 답도 생각해봅니다.
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 과제 기한
+2021년 5월 10일 월요일 23시 59분
