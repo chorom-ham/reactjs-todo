@@ -22,13 +22,14 @@ COM,MA(컴공-호크마) 프론트엔드 스터디 두번째 과제입니다
 - React 컴포넌트의 생명주기를 이해하고 React Hooks를 사용해봅니다.
 - props와 state를 이해하고 적용해봅니다.
 - ```styled-components``` 사용 방법을 알고 익숙해집니다.
+- 여러 길이 단위를 알아봅니다.
 
 
 ## 과제 요구사항
 ![image](https://user-images.githubusercontent.com/52379950/115743223-6cdcd600-a3cc-11eb-9988-ed666de38b59.png)
 
 - 리액트를 사용해 To Do App을 위와 같이 구현합니다. [(결과화면)](https://vanilla-js-todo-1st.vercel.app/)
-- 스타일링 시 ```styled-components```를 사용합니다.
+- 스타일링 시 ```styled-components```를 사용합니다. 길이 단위는 rem을 사용합니다.
 - props와 state를 둘 다 사용합니다.
 - 할 일을 입력한 뒤 추가 버튼을 클릭하거나, 엔터를 눌렀을 때 아래에 할 일이 추가되도록 구현합니다.
 - 할 일을 눌렀을 때 완료되었다는 의미로 글 중간에 줄이 그어집니다. 할 일 텍스트를 클릭했을 때, 텍스트 중간에 그어진 줄 여부가 토글되도록 구현합니다.
