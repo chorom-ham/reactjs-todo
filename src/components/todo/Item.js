@@ -2,12 +2,20 @@ import styled from "styled-components";
 
 // Hint: props로 id, text, onClick 등 (자유)
 export default function Item(props) {
+  // const onSubmit = e =>{
+  //   e.preventDefault();
+  //   props.onSubmit();
+  // };
   return (
     <div>
-      <StyledItem>
-        {props.id}. {props.text}
-      </StyledItem>
+      <StyledItem>{props.text}</StyledItem>
       <StyledDeleteButton>X</StyledDeleteButton>
+      {/* {props.list.map((todo) => (
+        <div>
+          <StyledItem>{todo.text}</StyledItem>
+          <StyledDeleteButton>X</StyledDeleteButton>
+        </div>
+      ))} */}
     </div>
   );
 }

@@ -19,7 +19,6 @@ export default function Todo() {
   ]);
 
   const addItem = (item) => {
-    console.log("addItem함수 실행됨");
     setTodoList(
       todoList.concat({
         id: item.id,
@@ -29,17 +28,27 @@ export default function Todo() {
     );
   };
 
+  // const removeItem = (id) => {
+  // };
+
+  // const toggleLine = (id) => {
+  //   const newTodoList = todoList.map((item) => {
+  //     if (item.id === id) {
+  //       item.check = !item.check;
+  //     }
+  //     return item;
+  //   });
+  //   setTodoList(newTodoList);
+  // };
+
   return (
     <div>
-      <Form onSumbit={addItem} name="wow"></Form>
+      <Form onSubmit={addItem} name="wow"></Form>
       <StyledList>
         {todoList.map((todo) => (
-          <Item
-            id={todo.id}
-            text={todo.text}
-            check={todo.check}
-            key={todo.id}
-          ></Item>
+          <div key={todo.id}>
+            <Item text={todo.text}></Item>
+          </div>
         ))}
       </StyledList>
     </div>
