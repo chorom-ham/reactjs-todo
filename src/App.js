@@ -2,6 +2,7 @@ import styled, { createGlobalStyle } from "styled-components";
 
 import Header from "./components/Header.js";
 import Todo from "./components/todo/Todo";
+import Form from "./components/todo/Form";
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -21,6 +22,7 @@ function App() {
       <GlobalStyle />
       <Header />
       <Todo />
+      <Form></Form>
     </Wrapper>
   );
 }
