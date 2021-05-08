@@ -22,7 +22,6 @@ function App() {
       <GlobalStyle />
       <Header />
       <Todo />
-      <Form></Form>
     </Wrapper>
   );
 }
