@@ -13,7 +13,9 @@ const GlobalStyle = createGlobalStyle`
     background-color: #eeeecc;
   }
 `;
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+font-size: 2rem;
+`;
 
 function App() {
   return (

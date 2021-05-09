@@ -21,7 +21,6 @@ export default function Form(props){
 
 const StyledForm = styled.form`
 display: flex;
-font-size: 2rem;
 height: 7rem;
 align-items: center;
 padding: 1rem;
