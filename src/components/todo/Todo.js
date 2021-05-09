@@ -57,20 +57,38 @@ export default function Todo() {
         onKeyPress = {handleKeyPress}
         onCreate={handleCreate}
       />
-      <section>
+      <Section>
         <p class = "title">
           할 일 목록
         </p>
-        <ul id = "todo_list">
-          {todoList.map( (todo, id) => (
+        <StyledUl id = "todo_list">
+          {todoList.map( (todo) => (
             <Item
-              key = {id}
               todo = {todo}
+              id = {todo.id}
+              key = {todo.id}
+              value = {todo.value}
+              check = {todo.check}
               onToggle = {handleToggle}
               onRemove = {handleRemove}/>
           ))}
-        </ul>
-      </section>
+        </StyledUl>
+      </Section>
     </div>
   );
 }
+
+const StyledUl= styled.ul`
+font-size: 2rem;
+align-items: center;
+padding-left: 1rem;
+list-style: none;
+`;
+
+const Section= styled.section`
+font-size: 2rem;
+font-weight: bold;
+align-items: center;
+padding-left: 2rem;
+margin: 2rem;
+`;
