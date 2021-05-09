@@ -1,74 +1,73 @@
-import { useState } from "react";
+import React from 'react';
+import { useCallback, useState, useRef } from "react";
 import styled from "styled-components";
 
 import Form from "./Form";
 import Item from "./Item";
 
-export default function Todo({todo, onToggle, onRemove}) {
-  const {id, input, checked} = todo;
-  const todoList = todo.map((id,text) => (
-    <Item
-      id = {id}
-      text = {text}
-      onToggle = {onToggle}
-      onRemove = {onRemove}
-      checked = {checked}
-    />
-  ));
-  const [todoList, setTodoList] = useState([
-    {
-      id: 0,
-      input: "",
-      checked: false,
-    },
-  ]);
-  const nextId = useRef(id++);
+export default function Todo() {
+  const [todoList, setTodoList] = useState([]);
+  let nextId = useRef();
+  const [value, setValue] = useState('');
 
-  const addTodo = () => {
-    if(input = ''){
-      return ;
-    }else{
-      const todo = {
-        id: nextId.current,
-        input,
-      };
-      setTodoList([todoList, todo]);
-      nextId.current++;
-    }
+  const addTodo = useCallback(value => {
+    const todo = {
+      id: nextId.current,
+      value,
+      check: false
+    };
+    setTodoList(todoList => todoList.concat(todo));
+    nextId.current += 1;
+  },[todoList]);
+ 
+  const handleChange = (e) => {
+    setValue(e.target.value)
   };
+
+ const handleCreate = (e) => {
+   e.preventDefault();
+   if (value !== ''){
+    addTodo(value);
+    setValue('');
+   }
+ };
+
+  const handleRemove = useCallback(id => {
+    setTodoList(todoList.filter((todo) => todo.id !== id))
+  }, [todoList]);
   
-  const onRemove = (id) => {
-    setTodoList(todoList.filter((todo) => 
-      todo.id !== id
-    ));
-  };
-  
-  const onToggle = (id) => {
+  const handleToggle = useCallback(id => {
     setTodoList(
       todoList.map((todo) =>
-      todo.id === id? {todo, checked: !todo.checked} : todo
+      todo.id === id? {...todo, check: !todo.check} : todo
       )
-    );
+    )}, [todoList]);
+
+  const handleKeyPress = (e) => {
+     if(e.key === 'Enter'){
+      handleCreate(e);
+    }
   };
 
   return (
     <div>
       <Form 
-        value = {input}
+        value = {value}
+        onChange = {handleChange}
         onKeyPress = {handleKeyPress}
-        onCreate={addTodo}
+        onCreate={handleCreate}
       />
       <section>
         <p class = "title">
           할 일 목록
         </p>
         <ul id = "todo_list">
-          {todoList.map( (todo) => (
+          {todoList.map( (todo, id) => (
             <Item
-              key = {todo.id}
-              todo={todo}
-              onToggle = {onToggle}
-              onRemove = {onRemove}/>
+              key = {id}
+              todo = {todo}
+              onToggle = {handleToggle}
+              onRemove = {handleRemove}/>
           ))}
         </ul>
       </section>
