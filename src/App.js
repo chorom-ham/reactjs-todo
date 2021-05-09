@@ -12,7 +12,6 @@ const GlobalStyle = createGlobalStyle`
     background-color: #eeeecc;
   }
 `;
-
 const Wrapper = styled.div``;
 
 function App() {
