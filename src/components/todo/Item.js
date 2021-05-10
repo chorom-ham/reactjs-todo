@@ -1,28 +1,39 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-// Hint: props로 id, text, onClick 등 (자유)
 export default function Item(props) {
-  // const onSubmit = e =>{
-  //   e.preventDefault();
-  //   props.onSubmit();
-  // };
+  const itemDelete = (event) => {
+    event.preventDefault();
+    props.remove();
+  };
+
+  const itemToggleLine = (event) => {
+    event.preventDefault();
+    props.toggleLine();
+  };
+  // 이부분을 주석해제하면 정상작동이 됩니다.
+  // const StyledItem = styled.span`
+  //   font-size: 2rem;
+  //   text-decoration: ${props.check ? "line-through" : "none"};
+  // `;
+
   return (
-    <div>
-      <StyledItem>{props.text}</StyledItem>
-      <StyledDeleteButton>X</StyledDeleteButton>
-      {/* {props.list.map((todo) => (
-        <div>
-          <StyledItem>{todo.text}</StyledItem>
-          <StyledDeleteButton>X</StyledDeleteButton>
-        </div>
-      ))} */}
-    </div>
+    <form>
+      <StyledItem onClick={itemToggleLine}>
+        {props.id} {props.text} {props.check ? "true" : "false"}
+      </StyledItem>
+      <button onClick={itemDelete}>X</button>
+    </form>
   );
 }
 
 const StyledItem = styled.span`
-  font-size: 2rem;
+  ${(props) => css`
+    font-size: 2rem;
+    text-decoration: ${props.check ? "line-through" : "none"};
+    ${console.log(props.check)};
+  `}
 `;
+
 const StyledDeleteButton = styled.button`
   margin-left: 1rem;
 `;

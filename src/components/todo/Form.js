@@ -10,17 +10,23 @@ export default function Form(props) {
   const onChange = (e) => {
     setValue(e.target.value);
   };
-  const onSubmitHandler = (e) => {
+
+  const formSubmit = (e) => {
     e.preventDefault();
+    console.log("FORM SUBMIT");
+    if (value === "") {
+      return;
+    }
     props.onSubmit({
-      id: nextId++,
+      id: nextId,
       text: value,
       check: false,
     });
+    nextId++;
     setValue("");
   };
   return (
-    <StyledForm onSubmit={onSubmitHandler}>
+    <StyledForm onSubmit={formSubmit}>
       <StyledInput
         id="newItem"
         type="text"
