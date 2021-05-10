@@ -11,17 +11,10 @@ export default function Item(props) {
     props.toggleLine();
   };
 
-  // 이부분을 주석해제하면 클릭시 줄이 그어지는 기능이 작동함.
-  // 다만 함수 내부에 styled component를 작성하였다는 경고가 뜬다.
-  // const StyledItem = styled.span`
-  //   font-size: 2rem;
-  //   text-decoration: ${props.check ? "line-through" : "none"};
-  // `;
-
   return (
     <StyledLine>
-      <StyledItem onClick={itemToggleLine}>
-        {props.text} {props.check ? "완료" : "미완료"}
+      <StyledItem onClick={itemToggleLine} check={props.check}>
+        {props.text}
       </StyledItem>
       <StyledDeleteButton onClick={itemDelete}>X</StyledDeleteButton>
     </StyledLine>
@@ -32,7 +25,6 @@ const StyledLine = styled.form`
   margin: 1rem;
 `;
 
-// 작동되고 있지 않음
 const StyledItem = styled.span`
   ${(props) => css`
     font-size: 2rem;
