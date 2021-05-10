@@ -1,19 +1,24 @@
 import React from 'react';
-import Todo from "./Todo";
-
 import styled from "styled-components";
 // Hint: props로 id, text, onClick 등 (자유)
 
 export default function Item(props) {
-  const {value, check} = props.todo;
+  const {id, value, check} = props.todo;
   return(
     <StyledList>
-      <span 
-        onClick = {props.onToggle}
+      <span
+        onClick = {(e) => {
+          e.preventDefault();
+          props.onToggle(id);}
+        }
         style={{ textDecoration: check ? "line-through" : "none" }}>
         {value}
       </span>
-      <DeleteButton onClick = {props.onRemove}>
+      <DeleteButton
+        onClick = {(e) => {
+          e.stopPropagation();
+          e.onRemove(id);}
+        }>
       X</DeleteButton>
     </StyledList> 
   );

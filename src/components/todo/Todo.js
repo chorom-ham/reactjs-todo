@@ -10,6 +10,11 @@ export default function Todo() {
   let nextId = useRef();
   const [value, setValue] = useState('');
 
+  
+  const handleChange = (e) => {
+    setValue(e.target.value)
+  };
+
   const addTodo = useCallback(value => {
     const todo = {
       id: nextId.current,
@@ -17,12 +22,8 @@ export default function Todo() {
       check: false
     };
     setTodoList(todoList => todoList.concat(todo));
-    nextId.current += 1;
+    nextId.current+=1;
   },[todoList]);
- 
-  const handleChange = (e) => {
-    setValue(e.target.value)
-  };
 
  const handleCreate = (e) => {
    e.preventDefault();
@@ -31,23 +32,24 @@ export default function Todo() {
     setValue('');
    }
  };
+ 
+const handleKeyPress = (e) => {
+  if(e.key === 'Enter'){
+   handleCreate(e);
+ }
+};
 
   const handleRemove = useCallback(id => {
-    setTodoList(todoList.filter((todo) => todo.id !== id))
+    setTodoList(todoList.filter((todo) => todo.id !== id));
+    console.log('remove');
   }, [todoList]);
   
   const handleToggle = useCallback(id => {
     setTodoList(
-      todoList.map((todo) =>
-      todo.id === id? {...todo, check: !todo.check} : todo
-      )
-    )}, [todoList]);
-
-  const handleKeyPress = (e) => {
-     if(e.key === 'Enter'){
-      handleCreate(e);
-    }
-  };
+      todoList.map((todo) => todo.id === id? {...todo, check: !todo.check} : todo)
+    );
+    console.log('toggle');
+  }, [todoList]);
 
   return (
     <div>
@@ -70,7 +72,8 @@ export default function Todo() {
               value = {todo.value}
               check = {todo.check}
               onToggle = {handleToggle}
-              onRemove = {handleRemove}/>
+              onRemove = {handleRemove}
+            />
           ))}
         </StyledUl>
       </Section>
