@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCallback, useState, useRef } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
 import Form from "./Form";
@@ -7,29 +7,23 @@ import Item from "./Item";
 
 export default function Todo() {
   const [todoList, setTodoList] = useState([]);
-  let nextId = useRef();
   const [value, setValue] = useState('');
-
   
   const handleChange = (e) => {
     setValue(e.target.value)
   };
 
-  const addTodo = useCallback(value => {
-    const todo = {
-      id: nextId.current,
-      value,
-      check: false
-    };
-    setTodoList(todoList => todoList.concat(todo));
-    nextId.current+=1;
-  },[todoList]);
-
  const handleCreate = (e) => {
    e.preventDefault();
    if (value !== ''){
-    addTodo(value);
-    setValue('');
+      setTodoList(
+        todoList.concat({
+          id: value.id,
+          value,
+          check: false
+        })
+      );
+      setValue('');
    }
  };
  
@@ -39,17 +33,17 @@ const handleKeyPress = (e) => {
  }
 };
 
-  const handleRemove = useCallback(id => {
+  const handleRemove = (id) => {
     setTodoList(todoList.filter((todo) => todo.id !== id));
     console.log('remove');
-  }, [todoList]);
+  };
   
-  const handleToggle = useCallback(id => {
+  const handleToggle = (id) => {
     setTodoList(
       todoList.map((todo) => todo.id === id? {...todo, check: !todo.check} : todo)
     );
     console.log('toggle');
-  }, [todoList]);
+  };
 
   return (
     <div>
