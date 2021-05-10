@@ -17,7 +17,7 @@ export default function Item(props) {
       <DeleteButton
         onClick = {(e) => {
           e.stopPropagation();
-          e.onRemove(id);}
+          props.onRemove(id);}
         }>
       X</DeleteButton>
     </StyledList> 
