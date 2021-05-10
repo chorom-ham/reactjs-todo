@@ -11,7 +11,7 @@ export default function Item(props) {
           e.preventDefault();
           props.onToggle(id);}
         }
-        style={{ textDecoration: check ? "line-through" : "none" }}>
+        style={{ textDecoration: (check ? "line-through" : "none") }}>
         {value}
       </span>
       <DeleteButton
