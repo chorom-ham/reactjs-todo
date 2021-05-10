@@ -1,30 +1,34 @@
 import styled from "styled-components";
 import React, { useState } from "react";
 
-// Hint: Form, Input, Button
-let nextId = 2;
+let nextId = 0;
 
 export default function Form(props) {
   const [value, setValue] = useState("");
 
   const onChange = (e) => {
+    // 입력되는 text를 value변수에 반영
     setValue(e.target.value);
   };
 
   const formSubmit = (e) => {
     e.preventDefault();
-    console.log("FORM SUBMIT");
+    // console.log("FORM SUBMIT");
+    // 빈 문자열이 입력시 함수 종료
     if (value === "") {
       return;
     }
+
     props.onSubmit({
       id: nextId,
       text: value,
       check: false,
     });
+
     nextId++;
     setValue("");
   };
+
   return (
     <StyledForm onSubmit={formSubmit}>
       <StyledInput

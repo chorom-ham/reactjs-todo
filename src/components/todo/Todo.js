@@ -5,18 +5,7 @@ import Form from "./Form";
 import Item from "./Item";
 
 export default function Todo() {
-  const [todoList, setTodoList] = useState([
-    {
-      id: 0,
-      text: "할일1",
-      check: false,
-    },
-    {
-      id: 1,
-      text: "할일2",
-      check: true,
-    },
-  ]);
+  const [todoList, setTodoList] = useState([]);
 
   const addItem = (item) => {
     setTodoList(
@@ -32,7 +21,9 @@ export default function Todo() {
     if (!window.confirm(text + "을/를 삭제하시겠습니까?")) {
       return;
     }
+    // filter를 통과한 원소만 모아서 새로운 배열을 만든다.
     setTodoList(todoList.filter((item) => item.id !== id));
+    console.log(todoList);
   };
 
   const toggleLine = (id) => {
@@ -48,6 +39,7 @@ export default function Todo() {
   return (
     <div>
       <Form onSubmit={addItem}></Form>
+      <ContentHeader>할 일 목록</ContentHeader>
       <StyledList>
         {todoList.map((todo) => (
           <div key={todo.id}>
@@ -66,5 +58,11 @@ export default function Todo() {
 }
 
 const StyledList = styled.ul`
-  background: powderblue;
+  margin-left: 10rem;
+`;
+
+const ContentHeader = styled.p`
+  font-size: 3rem;
+  font-weight: bold;
+  margin-left: 10rem;
 `;
