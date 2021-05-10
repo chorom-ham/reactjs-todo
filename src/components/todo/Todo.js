@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from "react";
+import { useState, useRef } from "react";
 import styled from "styled-components";
 
 import Form from "./Form";
@@ -8,7 +8,8 @@ import Item from "./Item";
 export default function Todo() {
   const [todoList, setTodoList] = useState([]);
   const [value, setValue] = useState('');
-  
+  const nextId = useRef(0);
+
   const handleChange = (e) => {
     setValue(e.target.value)
   };
@@ -18,12 +19,14 @@ export default function Todo() {
    if (value !== ''){
       setTodoList(
         todoList.concat({
-          id: value.id,
+          id: nextId,
           value,
           check: false
         })
       );
       setValue('');
+      nextId.current += 1;
+      console.log(nextId);
    }
  };
  
@@ -49,8 +52,8 @@ const handleKeyPress = (e) => {
     <div>
       <Form 
         value = {value}
-        onChange = {handleChange}
         onKeyPress = {handleKeyPress}
+        onChange = {handleChange}
         onCreate={handleCreate}
       />
       <Section>
@@ -60,13 +63,11 @@ const handleKeyPress = (e) => {
         <StyledUl id = "todo_list">
           {todoList.map( (todo) => (
             <Item
-              todo = {todo}
               id = {todo.id}
-              key = {todo.id}
               value = {todo.value}
               check = {todo.check}
-              onToggle = {handleToggle}
-              onRemove = {handleRemove}
+              onRemove = {() => handleRemove(todo.id)}
+              onToggle = {() => handleToggle(todo.id)}
             />
           ))}
         </StyledUl>

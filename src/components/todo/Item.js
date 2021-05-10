@@ -3,22 +3,21 @@ import styled from "styled-components";
 // Hint: props로 id, text, onClick 등 (자유)
 
 export default function Item(props) {
-  const {id, value, check} = props.todo;
   return(
     <StyledList>
       <span
         onClick = {(e) => {
           e.preventDefault();
-          props.onToggle(id);}
-        }
-        style={{ textDecoration: (check ? "line-through" : "none") }}>
-        {value}
+          props.onToggle();
+        }}
+        style={{ textDecoration: (props.check ? "line-through" : "none") }}>
+        {props.value}
       </span>
       <DeleteButton
         onClick = {(e) => {
-          e.stopPropagation();
-          props.onRemove(id);}
-        }>
+          e.preventDefault();
+          props.onRemove();
+        }}>
       X</DeleteButton>
     </StyledList> 
   );
