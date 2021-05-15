@@ -5,19 +5,10 @@ import styled from "styled-components";
 export default function Item(props) {
   return(
     <StyledList>
-      <span
-        onClick = {(e) => {
-          e.preventDefault();
-          props.onToggle();
-        }}
-        style={{ textDecoration: (props.check ? "line-through" : "none") }}>
+      <StyledTodo onClick = {props.onToggle} check={props.check}>
         {props.value}
-      </span>
-      <DeleteButton
-        onClick = {(e) => {
-          e.preventDefault();
-          props.onRemove();
-        }}>
+      </StyledTodo>
+      <DeleteButton onClick = {props.onRemove}>
       X</DeleteButton>
     </StyledList> 
   );
@@ -37,4 +28,7 @@ height: 2rem;
 align-items: center;
 margin-left: 2rem;
 justify-content: center;
+`;
+const StyledTodo = styled.span`
+text-decoration: ${(props) => (props.check ? "line-through" : "none")};
 `;

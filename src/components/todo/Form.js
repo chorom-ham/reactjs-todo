@@ -1,19 +1,38 @@
 import React from 'react';
 import styled from "styled-components";
+import { useState } from "react";
 // Hint: Form, Input, Button
 
 export default function Form(props){
+  const [value, setValue] = useState('');
+
+  const onChange = (e) => {
+    setValue(e.target.value)
+  };
+
+const createTodo = (e) => {
+  e.preventDefault();
+  if (value !== ''){
+     props.onCreate(value);
+     setValue('');
+  }
+};
+
+const onKeyPress = (e) => {
+  if(e.key === 'Enter'){
+    createTodo(e);
+  }
+};
+
   return (
-    <StyledForm class = "todo_form">
+    <StyledForm ClassName = "todoForm" onCreate = {createTodo}>
         <StyledInput
           type = "text"
+          value = {value}
           placeholder="할 일을 입력하세요"
-          value = {props.value}
-          onChange = {props.onChange}
-          onKeyPress={props.onKeyPress}/>
-        <StyledAddButton
-          type="submit"
-          onClick = {props.onCreate}>
+          onChange = {onChange}
+          onKeyPress={onKeyPress}/>
+        <StyledAddButton type="submit">
         추가</StyledAddButton>
     </StyledForm>
   );
