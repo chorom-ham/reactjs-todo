@@ -38,10 +38,10 @@ export default function Todo() {
     <div>
       <Form onCreate={addTodoList}/>
       <Section>
-        <p ClassName = "title">
+        <TodoListTitle ClassName = "todoListTitle">
           할 일 목록
-        </p>
-        <StyledUl ClassName = "todoList">
+        </TodoListTitle>
+        <TodoList ClassName = "todoList">
           {todoList.map((todo) => (
             <Item
               id = {todo.id}
@@ -51,13 +51,13 @@ export default function Todo() {
               onToggle = {() => toggleTodo(todo.id)}
             />
           ))}
-        </StyledUl>
+        </TodoList>
       </Section>
     </div>
   );
 }
 
-const StyledUl= styled.ul`
+const TodoList= styled.ul`
 font-size: 2rem;
 align-items: center;
 padding-left: 1rem;
@@ -71,3 +71,5 @@ align-items: center;
 padding-left: 2rem;
 margin: 2rem;
 `;
+
+const TodoListTitle = styled.p``;
