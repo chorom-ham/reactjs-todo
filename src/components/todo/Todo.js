@@ -1,20 +1,18 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import styled from "styled-components";
 
 import Form from "./Form";
 import Item from "./Item";
 
 export default function Todo() {
+  // 목록 관리하는 배열
   const [todoList, setTodoList] = useState([]);
+  // 항목마다 부과할 ID
+  const [nextId, setNextId] = useState(0);
 
-  const addItem = (item) => {
-    setTodoList(
-      todoList.concat({
-        id: item.id,
-        text: item.text,
-        check: item.check,
-      })
-    );
+  const addItem = (newItem) => {
+    setTodoList([...todoList, { id: nextId, text: newItem }]);
+    setNextId(nextId + 1);
   };
 
   const removeItem = (id, text) => {
@@ -23,37 +21,22 @@ export default function Todo() {
     }
     // filter를 통과한 원소만 모아서 새로운 배열을 만든다.
     setTodoList(todoList.filter((item) => item.id !== id));
-    console.log(todoList);
-  };
-
-  const toggleLine = (id) => {
-    const newTodoList = todoList.map((item) => {
-      if (item.id === id) {
-        item.check = !item.check;
-      }
-      return item;
-    });
-    setTodoList(newTodoList);
   };
 
   return (
-    <div>
+    <Fragment>
       <Form onSubmit={addItem}></Form>
       <ContentHeader>할 일 목록</ContentHeader>
       <StyledList>
-        {todoList.map((todo) => (
-          <div key={todo.id}>
-            <Item
-              id={todo.id}
-              text={todo.text}
-              check={todo.check}
-              remove={() => removeItem(todo.id, todo.text)}
-              toggleLine={() => toggleLine(todo.id)}
-            ></Item>
-          </div>
+        {todoList.map((item) => (
+          <Item
+            key={item.id}
+            text={item.text}
+            onClick={() => removeItem(item.id, item.text)}
+          ></Item>
         ))}
       </StyledList>
-    </div>
+    </Fragment>
   );
 }
 

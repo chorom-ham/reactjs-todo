@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import React, { useState } from "react";
 
-let nextId = 0;
-
 export default function Form(props) {
   const [value, setValue] = useState("");
 
@@ -11,32 +9,22 @@ export default function Form(props) {
     setValue(e.target.value);
   };
 
-  const formSubmit = (e) => {
+  const submitText = (e) => {
     e.preventDefault();
-    // console.log("FORM SUBMIT");
-    // 빈 문자열이 입력시 함수 종료
+
+    // 빈 문자열 입력시 함수 종료
     if (value === "") {
       return;
     }
 
-    props.onSubmit({
-      id: nextId,
-      text: value,
-      check: false,
-    });
+    props.onSubmit(value);
 
-    nextId++;
     setValue("");
   };
 
   return (
-    <StyledForm onSubmit={formSubmit}>
-      <StyledInput
-        id="newItem"
-        type="text"
-        onChange={onChange}
-        value={value}
-      ></StyledInput>
+    <StyledForm onSubmit={submitText}>
+      <StyledInput type="text" onChange={onChange} value={value}></StyledInput>
       <InputButton type="submit">추가</InputButton>
     </StyledForm>
   );

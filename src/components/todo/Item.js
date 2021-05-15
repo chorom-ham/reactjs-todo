@@ -1,35 +1,26 @@
-import styled, { css } from "styled-components";
+import { useState } from "react";
+import styled from "styled-components";
 
 export default function Item(props) {
-  const itemDelete = (event) => {
-    event.preventDefault();
-    props.remove();
-  };
-
-  const itemToggleLine = (event) => {
-    event.preventDefault();
-    props.toggleLine();
-  };
+  const [line, setLine] = useState(false);
 
   return (
     <StyledLine>
-      <StyledItem onClick={itemToggleLine} check={props.check}>
+      <StyledItem onClick={() => setLine(!line)} line={line}>
         {props.text}
       </StyledItem>
-      <StyledDeleteButton onClick={itemDelete}>X</StyledDeleteButton>
+      <StyledDeleteButton onClick={props.onClick}>X</StyledDeleteButton>
     </StyledLine>
   );
 }
 
-const StyledLine = styled.form`
+const StyledLine = styled.div`
   margin: 1rem;
 `;
 
 const StyledItem = styled.span`
-  ${(props) => css`
-    font-size: 2rem;
-    text-decoration: ${props.check ? "line-through" : "none"};
-  `}
+  font-size: 2rem;
+  text-decoration: ${(props) => (props.line ? "line-through" : "none")};
 `;
 
 const StyledDeleteButton = styled.button`
