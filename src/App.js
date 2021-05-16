@@ -1,11 +1,10 @@
 import styled, { createGlobalStyle } from "styled-components";
-
 import Header from "./components/Header.js";
 import Todo from "./components/todo/Todo";
 
 const GlobalStyle = createGlobalStyle`
   html {
-    font-size : 10px;
+    font-size : 13px;
   }
   body {
     margin: 0;
