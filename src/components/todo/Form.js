@@ -52,8 +52,12 @@ const StyledInput = styled.input`
   padding: 0.5rem;
   padding-left: 1.5rem;
   border: 0.5rem inset #eeeecc;
-  background-color: ivory;
+  background-color: #cccfbc;
   border-radius: 1rem;
+
+  &:hover {
+    background-color: ivory;
+  }
 `;
 
 const InputButton = styled.button`
@@ -61,11 +65,16 @@ const InputButton = styled.button`
   height: 100%;
   padding: 0.5rem;
   border: 0.5rem inset #eeeecc;
-  background-color: ivory;
+  background-color: #cccfbc;
   color: #00462a;
   font-size: 1.8rem;
   font-weight: bold;
   border-radius: 1rem;
+
+  &:hover {
+    background-color: #00462a;
+    color: ivory;
+  }
 `;
 
 export default Form;

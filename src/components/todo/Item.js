@@ -34,7 +34,13 @@ const DeleteButton = styled.button`
   color: ivory;
   margin-left: 0.5rem;
   border-radius: 100%;
-  height: 2rem;
+  height: 1.8rem;
+  width: 1.8rem;
+
+  &:hover {
+    background-color: ivory;
+    color: #00462a;
+  }
 `;
 
 export default Item;
