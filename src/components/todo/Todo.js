@@ -13,12 +13,16 @@ export default function Todo() {
     nextId.current += 1;
   }
 
+  const removeElement = (id) =>{
+    setTodoList(todoList.filter(todoList => todoList.id !== id));
+  }
+
   return (
     <div>
       <Form onSubmit={addElement}/>
       <Styledul>
-      {todoList.map(element => (
-        <Item id={element.id} text={element.text} />
+      {todoList.map((element, index) => (
+        <Item key = {index} id={element.id} text={element.text} onRemove={removeElement} />
       ))}</Styledul>
     </div>
   );

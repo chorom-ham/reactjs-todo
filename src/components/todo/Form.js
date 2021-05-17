@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 
 // Hint: Form, Input, Button
 export default function Form({onSubmit}) {
@@ -26,7 +25,7 @@ export default function Form({onSubmit}) {
         placeholder="할 일을 입력하세요."
         onChange={onChange}
       />
-      <Styledbutton>추가</Styledbutton>
+      <Styledaddbtn>추가</Styledaddbtn>
     </Styledform>
   );
 }
@@ -35,7 +34,7 @@ const Styledform = styled.form`
 
 `;
 
-const Styledbutton = styled.button`
+const Styledaddbtn = styled.button`
 color:green
 `;
 const Styledinput = styled.input`
