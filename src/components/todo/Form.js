@@ -9,7 +9,6 @@ export default function Form({ onSubmit }) {
     setValue(e.target.value);
   };
   const submitInput = (e) => {
-    console.log("submit");
     e.preventDefault();
     if (value === "") {
       return;
@@ -30,11 +29,16 @@ export default function Form({ onSubmit }) {
   );
 }
 
-const Styledform = styled.form``;
+const Styledform = styled.form`
+  margin-right:auto;
+  margin-left:auto
+`;
 
 const Styledaddbtn = styled.button`
   color: green;
+  height: 2.5rem;
 `;
 const Styledinput = styled.input`
-  width: 70%;
+  height: 2.5rem;
+  width: 90%;
 `;

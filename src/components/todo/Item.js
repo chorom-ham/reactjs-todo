@@ -15,10 +15,23 @@ export default function Item({ id, text, onRemove }) {
   );
 }
 
-const Styledli = styled.li``;
+const Styledli = styled.li`
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 1.5rem;
+`;
 
 const Styledtext = styled.span`
   text-decoration: ${(props) => (props.toggle ? "line-through" : "none")};
 `;
 
-const Styledremovebtn = styled.button``;
+const Styledremovebtn = styled.button`
+  font-size: 1rem;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background-color: #00462a;
+  color: white;
+  margin-left: 3px;
+  border-radius: 50%;
+`;
