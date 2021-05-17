@@ -6,28 +6,32 @@ import Item from "./Item";
 
 export default function Todo() {
   const [todoList, setTodoList] = useState([]);
-  const nextId = useRef(1);
+  const [nextId, setNextId] = useState(0);
 
-  const addElement =(inputValue)=> {
+  const addElement = (inputValue) => {
     setTodoList([...todoList, { id: nextId, text: inputValue }]);
-    nextId.current += 1;
-  }
+    setNextId(nextId + 1);
+  };
 
-  const removeElement = (id) =>{
-    setTodoList(todoList.filter(todoList => todoList.id !== id));
-  }
+  const removeElement = (id) => {
+    setTodoList(todoList.filter((tdlist) => tdlist.id !== id));
+  };
 
   return (
     <div>
-      <Form onSubmit={addElement}/>
+      <Form onSubmit={addElement} />
       <Styledul>
-      {todoList.map((element, index) => (
-        <Item key = {index} id={element.id} text={element.text} onRemove={removeElement} />
-      ))}</Styledul>
+        {todoList.map((element, index) => (
+          <Item
+            key={index}
+            id={element.id}
+            text={element.text}
+            onRemove={() => removeElement(element.id)}
+          />
+        ))}
+      </Styledul>
     </div>
   );
 }
 
-const Styledul = styled.ul`
-
-`;
+const Styledul = styled.ul``;

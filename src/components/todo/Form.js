@@ -2,16 +2,16 @@ import styled from "styled-components";
 import React, { useState } from "react";
 
 // Hint: Form, Input, Button
-export default function Form({onSubmit}) {
+export default function Form({ onSubmit }) {
   const [value, setValue] = useState("");
 
-  const onChange = (e) =>{
+  const onChange = (e) => {
     setValue(e.target.value);
   };
-  const submitInput = e =>{
+  const submitInput = (e) => {
     console.log("submit");
     e.preventDefault();
-    if(value === ""){
+    if (value === "") {
       return;
     }
     onSubmit(value);
@@ -30,14 +30,11 @@ export default function Form({onSubmit}) {
   );
 }
 
-const Styledform = styled.form`
-
-`;
+const Styledform = styled.form``;
 
 const Styledaddbtn = styled.button`
-color:green
+  color: green;
 `;
 const Styledinput = styled.input`
-width:70%
+  width: 70%;
 `;
-
